@@ -1,0 +1,4 @@
+// файл шаблон, должен лежать в исходниках
+#pragma once
+
+#cmakedefine PROJECT_VERSION_PATCH @PROJECT_VERSION_PATCH@
