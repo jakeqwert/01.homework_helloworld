@@ -2,3 +2,20 @@
 #pragma once
 
 #cmakedefine PROJECT_VERSION_PATCH @PROJECT_VERSION_PATCH@
+// кодогенератор преобразует этот файл
+// произведет замену    #cmakedefine -> #define
+// произведет замену    @PROJECT_VERSION_PATCH@ -> 1
+
+
+// перед запуском кода на локальном компьютере,
+//создать переменную окружения TRAVIS_BUILD_NUMBER
+#cmakedefine TRAVIS_BUILD_NUMBER @TRAVIS_BUILD_NUMBER@
+// #cmakedefine TRAVIS_BUILD_NUMBER $ENV{TRAVIS_BUILD_NUMBER}
+
+// # project(cmake VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+//    project(cmake VERSION 0.0.1$ENV{TRAVIS_BUILD_NUMBER})
+//    # имя проекта = cmake
+//    # автоматом сформировалось 3 переменные
+//    # ${PROJECT_VERSION_MAJOR}  0
+//    # ${PROJECT_VERSION_MINOR}  0
+//    # ${PROJECT_VERSION_PATCH}  1

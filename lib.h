@@ -3,3 +3,5 @@
 // отличие #include от #pragma once
 
 int version();
+
+int travis_build_number();
