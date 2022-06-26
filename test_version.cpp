@@ -12,7 +12,7 @@ BOOST_AUTO_TEST_SUITE(helloworld_test_suite)
 // отдельный тест CASE, с именем helloworld_test_version
 BOOST_AUTO_TEST_CASE(helloworld_test_version)
 {
-    BOOST_CHECK(travis_build_number() > 0); // код выполняет тестирование
+    BOOST_CHECK(github_run_number() > 0); // код выполняет тестирование
 }
 
 BOOST_AUTO_TEST_SUITE_END()
