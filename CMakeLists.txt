@@ -23,7 +23,7 @@ project(helloworld_project
 
 #set(TRAVIS_BUILD_NUMBER "$ENV{TRAVIS_BUILD_NUMBER}")
 set(TRAVIS_BUILD_NUMBER "${PATCH_NUM}")
-
+set(GITHUB_RUN_NUMBER "${PATCH_NUM}")
 
 
 # подключаем зависимости, cmake попытается найти в системе зависимости
