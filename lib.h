@@ -5,3 +5,5 @@
 int version();
 
 int travis_build_number();
+
+int github_run_number();

@@ -35,7 +35,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
+          release_name: Release helloworld_project ${{ github.run_number }}
           draft: false
           prerelease: false
 
@@ -46,8 +46,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./helloworld-1.1.${{ github.run_number }}-Linux.deb
-          asset_name: helloworld-1.1.${{ github.run_number }}-Linux.deb
+          asset_path: ./helloworld_project-1.1.${{ github.run_number }}-Linux.deb
+          asset_name: helloworld_project-1.1.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
 
 
