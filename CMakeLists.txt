@@ -1,8 +1,19 @@
 cmake_minimum_required(VERSION 3.2)
 
+if(DEFINED ENV{GITHUB_RUN_NUMBER})
+    set(PATCH_NUM $ENV{GITHUB_RUN_NUMBER})
+else()
+    set(PATCH_NUM 1)
+endif()
+
 # перед запуском кода на локальном компьютере,
 # создать переменную окружения TRAVIS_BUILD_NUMBER, а на TRAVIS CI будет такая переменная
-project(helloworld_project VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+#project(helloworld_project VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+# GitHub Action
+project(helloworld_project
+        LANGUAGES CXX
+        VERSION 1.1.${PATCH_NUM}
+        )
 #project(helloworld_project VERSION 0.0.1$ENV{TRAVIS_BUILD_NUMBER})
 # имя проекта = cmake
 # автоматом сформировалось 3 переменные
@@ -10,7 +21,10 @@ project(helloworld_project VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 # ${PROJECT_VERSION_MINOR}  0
 # ${PROJECT_VERSION_PATCH}  1
 
-set(TRAVIS_BUILD_NUMBER "$ENV{TRAVIS_BUILD_NUMBER}")
+#set(TRAVIS_BUILD_NUMBER "$ENV{TRAVIS_BUILD_NUMBER}")
+set(TRAVIS_BUILD_NUMBER "${PATCH_NUM}")
+
+
 
 # подключаем зависимости, cmake попытается найти в системе зависимости
 # если они не устанвовлена, то будет ошибка что он не смог найти, нужно установить в систему эти зависимости
@@ -76,7 +90,7 @@ set(CPACK_GENERATOR DEB)
 # указываем версии пакета из версии программы
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
-set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}") # переменная ${PROJECT_VERSION_PATCH}
 
 
 # ответственный за пакет
